@@ -291,6 +291,7 @@ class PlantGateway:
                 'state_topic':         self._get_state_topic(sensor_config),
                 'unit_of_measurement': UNIT_OF_MEASUREMENT[attribute],
                 'value_template':      '{{value_json.'+attribute.value+'}}',
+                'force_update':        'true',
             }
             if sensor_config.alias is not None:
                 payload['name'] = '{}_{}'.format(sensor_config.alias, attribute.value)
