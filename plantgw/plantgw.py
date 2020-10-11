@@ -299,5 +299,5 @@ class PlantGateway:
                 payload['device_class'] = DEVICE_CLASS[attribute]
 
             json_payload = json.dumps(payload)
-            self.mqtt_client.publish(topic, json_payload, qos=1, retain=False)
+            self.mqtt_client.publish(topic, json_payload, qos=1, retain=True)
             logging.info('sent sensor config to topic %s', topic)
