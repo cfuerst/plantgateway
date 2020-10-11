@@ -291,10 +291,14 @@ class PlantGateway:
                 'state_topic':         self._get_state_topic(sensor_config),
                 'unit_of_measurement': UNIT_OF_MEASUREMENT[attribute],
                 'value_template':      '{{value_json.'+attribute.value+'}}',
+                'unique_id':           'sensor.plant_{}'.format(sensor_config.short_mac)
             }
             if sensor_config.alias is not None:
                 payload['name'] = '{}_{}'.format(sensor_config.alias, attribute.value)
-
+                
+            if sensor_config.alias is not None:
+                payload['unique_id'] = 'sensor.{}_{}'.format(sensor_config.alias, attribute.value)
+                
             if DEVICE_CLASS[attribute] is not None:
                 payload['device_class'] = DEVICE_CLASS[attribute]
 
